@@ -1,5 +1,9 @@
 app.controller('MainController', function ($scope, FlashCardsFactory) {
-	$scope.flashCards = FlashCardsFactory.getFlashCards();
+
+FlashCardsFactory.getFlashCards()
+.then(function(response) {
+	$scope.flashCards = response;
+});
 
 	$scope.answerQuestion = function (answer, flashCard) {
 		if (!flashCard.answered) {
@@ -8,10 +12,8 @@ app.controller('MainController', function ($scope, FlashCardsFactory) {
 		}
 	}
 
-    console.log(FlashCardsFactory);
-    
-    setTimeout( function(){ console.log($scope.flashCards);}
-    , 2000);
+    // console.log(FlashCardsFactory);
+FlashCardsFactory.getFlashCards().then(function(response) {console.log(response)});
 });
 
 
