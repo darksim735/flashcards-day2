@@ -7,7 +7,10 @@
         <link rel="stylesheet" type="text/css" href="style.css" />
     </head>
     <body ng-app="flashCards" ng-controller="MainController">
-        {{2 + 2 }}
+        <button class="category-button" ng-click="getCategoryCards('MongoDB')">MongoDB</button>
+        <button class="category-button" ng-click="getCategoryCards('Express')">Express</button>
+        <button class="category-button" ng-click="getCategoryCards('Angular')">Angular</button>
+        <button class="category-button" ng-click="getCategoryCards('Node')">Node</button>
         <div
     		ng-repeat="flashCard in flashCards | orderBy : 'question'"
     		class="flash-card">

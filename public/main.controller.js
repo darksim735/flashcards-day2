@@ -1,9 +1,23 @@
 app.controller('MainController', function ($scope, FlashCardsFactory) {
 
-FlashCardsFactory.getFlashCards()
-.then(function(response) {
-	$scope.flashCards = response;
-});
+	FlashCardsFactory.getFlashCards()
+	.then(function(data) {
+		$scope.flashCards = data;
+	});
+
+	$scope.getCategoryCards = function (category) {
+		FlashCardsFactory.getFlashCards(category)
+		.then(function(data) {
+			$scope.flashCards = data;
+		});
+	}
+
+	$scope.categories = [
+	    'MongoDB',
+	    'Express',
+	    'Angular',
+	    'Node'
+	];
 
 	$scope.answerQuestion = function (answer, flashCard) {
 		if (!flashCard.answered) {
@@ -11,9 +25,6 @@ FlashCardsFactory.getFlashCards()
 			flashCard.answeredCorrectly = answer.correct;
 		}
 	}
-
-    // console.log(FlashCardsFactory);
-FlashCardsFactory.getFlashCards().then(function(response) {console.log(response)});
 });
 
 
